@@ -4,6 +4,7 @@ using Kino.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kino.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220614233222_Director")]
+    partial class Director
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,29 +24,6 @@ namespace Kino.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Kino.Models.DB_Models.Actor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Experience")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Actors");
-                });
-
             modelBuilder.Entity("Kino.Models.DB_Models.Director", b =>
                 {
                     b.Property<int>("Id")
@@ -52,9 +31,6 @@ namespace Kino.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AwardsNumber")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -102,9 +78,6 @@ namespace Kino.Data.Migrations
                     b.Property<DateTime>("ProjectionTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("DirectorID");
@@ -112,29 +85,6 @@ namespace Kino.Data.Migrations
                     b.HasIndex("GenreID");
 
                     b.ToTable("Movies");
-                });
-
-            modelBuilder.Entity("Kino.Models.DB_Models.Movie_Actor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("ActorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ActorId");
-
-                    b.HasIndex("MovieId");
-
-                    b.ToTable("Movie_Actors");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -358,25 +308,6 @@ namespace Kino.Data.Migrations
                     b.Navigation("Genre");
                 });
 
-            modelBuilder.Entity("Kino.Models.DB_Models.Movie_Actor", b =>
-                {
-                    b.HasOne("Kino.Models.DB_Models.Actor", "Actor")
-                        .WithMany("Movie_Actors")
-                        .HasForeignKey("ActorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Kino.Models.DB_Models.Movie", "Movie")
-                        .WithMany("Movie_Actors")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Actor");
-
-                    b.Navigation("Movie");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -428,11 +359,6 @@ namespace Kino.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Kino.Models.DB_Models.Actor", b =>
-                {
-                    b.Navigation("Movie_Actors");
-                });
-
             modelBuilder.Entity("Kino.Models.DB_Models.Director", b =>
                 {
                     b.Navigation("Movies");
@@ -441,11 +367,6 @@ namespace Kino.Data.Migrations
             modelBuilder.Entity("Kino.Models.DB_Models.Genre", b =>
                 {
                     b.Navigation("Movies");
-                });
-
-            modelBuilder.Entity("Kino.Models.DB_Models.Movie", b =>
-                {
-                    b.Navigation("Movie_Actors");
                 });
 #pragma warning restore 612, 618
         }

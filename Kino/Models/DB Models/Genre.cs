@@ -7,6 +7,8 @@ namespace Kino.Models.DB_Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string? Name { get; set; }
+
+        public IList<Movie>? Movies { get; set; }
     }
 }

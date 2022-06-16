@@ -1,18 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Kino.Models
+namespace Kino.Models.DB_Models
 {
     public class Actor
     {
-        public enum EnumPlec { K,M}
-
-
+        public enum GenderEnum {Male, Female }
         [Key]
         public int Id { get; set; }
         [Required]
-        [Display(Name = "Imie i nazwisko")]
         public string Name { get; set; }
-        public int Eperience { get; set; }
-        public EnumPlec Plec { get; set; }
+        public int Experience { get; set; }
+        public GenderEnum Gender { get; set; }
+
+        public List<Movie_Actor>? Movie_Actors { get; set; }
     }
 }

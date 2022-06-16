@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Actors";
+}
+
+<div>
+<h1>Actors</h1>
+<table class="table-bordered">
+    <thead>
+        <tr>
+        <th >ID</th>
+        <th >Name</th>
+        <th >Experience</th>
+        <th >Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var actor in Model)
+        {
+            <tr>
+                <td>@actor.Id</td>
+                <td>@actor.Name</td>
+                <td>@actor.Experience</td>
+                <td>@actor.Gender</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+<a class="btn btn-primary" asp-area="" asp-controller="Actor" asp-action="Create">Add new Actor</a>
+

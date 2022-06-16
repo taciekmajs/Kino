@@ -5,10 +5,13 @@ namespace Kino.Models.DB_Models
     public class Director
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
         [Required]
-        [Display(Name = "Imie i nazwisko")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
+        public int AwardsNumber { get; set; }
+
+        public IList<Movie>? Movies { get; set; }
+
 
     }
 }
