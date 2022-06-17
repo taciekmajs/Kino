@@ -58,6 +58,21 @@ namespace Kino.Controllers
             }
         }
 
+        public IActionResult Remove(int? id)
+        {
+            if (id == null || id == 0) return NotFound();
+            var movie = _db.Movies.FirstOrDefault(x => x.Id == id);
+
+            if (movie != null)
+            {
+                _db.Movies.Remove(movie);
+                _db.SaveChanges();
+            }
+            else return NotFound();
+
+            return RedirectToAction("Index");
+        }
+
 
     }
 }

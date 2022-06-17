@@ -47,26 +47,26 @@ namespace Kino.Controllers
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0) return NotFound();
-            var genre = _db.Genres.FirstOrDefault(x => x.Id == id);
+            var actor = _db.Actors.FirstOrDefault(x => x.Id == id);
 
-            if (genre != null) return View(genre);
+            if (actor != null) return View(actor);
             return NotFound();
         }
 
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Genre genre)
+        public IActionResult Edit(Actor actor)
         {
             if (ModelState.IsValid)
             {
-                _db.Genres.Update(genre);
+                _db.Actors.Update(actor);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
             {
-                return View(genre);
+                return View(actor);
             }
         }
 

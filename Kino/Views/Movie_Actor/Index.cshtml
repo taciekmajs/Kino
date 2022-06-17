@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Actors List";
+}
+
+<div>
+<h1>Actors:</h1>
+<table class="table-bordered">
+    <tbody>
+            @foreach (var movie_actor in Model)
+            {
+                <tr><td>@movie_actor.Actor.Name</td></tr>
+            }
+    </tbody>
+</table>
+</div>
+
+

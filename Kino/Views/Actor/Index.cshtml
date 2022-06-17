@@ -11,6 +11,7 @@
         <th >Name</th>
         <th >Experience</th>
         <th >Gender</th>
+        <th >Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,7 @@
                 <td>@actor.Name</td>
                 <td>@actor.Experience</td>
                 <td>@actor.Gender</td>
+                <td><a asp-controller="Actor" asp-action="Edit" class="btn btn-secondary" asp-route-id="@actor.Id">Edit</a></td>
             </tr>
         }
     </tbody>
