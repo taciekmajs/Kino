@@ -1,5 +1,88 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <title>Kino</title>
+    <meta name="description" content="Nieograniczony wybór topowych filmów" />
+    <meta name="author" content="Maciej Tajs, Oliwia Trojszczak, Hanna Waligóra" />
+    <meta name="copyright" content="Copyright owner" />
+</head>
+<body>
+    <h2>Cel projektu</h2>
+    <p>
+        Celem projektu jest wykonanie prostej aplikacji internetowej spiêtej z lokalną bazą danych w technologii ASP.NET MVC.<br />
+        W projekcie stworzono aplikacjê internetow¹ dla kina, która w oparciu o model CRUD (Create Remove Update Display) pozwoli <br />
+        na tworzenie, usuwanie, edytowanie i edytowanie danych z bazy danych oraz wprowadzanie do niej filmów, aktorów, reżyserów, gatunków filmu.
+    </p>
+
+    <h2>Zastosowanie biznesowe</h2>
+    <p>
+        Stworzona aplikacja umożliwia używanie jej mniejszych kinach z uwagi na to, że zawiera podstawowe funkcjonalności,<br />
+        które są potrzebne w zarządzaniu taką działalnością.  Umożliwia edycjê oraz ustalenie gatunku filmu, czasu jego trwania, <br />
+        daty wyświetlania filmu. Tak¿e edycjê listy aktorów, reżyserów, czy gatunków filmów oraz przypisywanie ich do poszczególnych filmów.
+    </p>
+    <br />
+
+    <h2>Kontrolery</h2>
+
+    <p><b>Wszystkie kontrolery poza Movie_Actor i Movie zawieraj¹ metody:</b></p>
+    <ol type="1" start="1">
+        <li>Index (podobny do display)– odpowiedzialny za wyœwietlanie.</li>
+        <li>Create – tworzenie (dodawanie do bazy danych aktorów, reżyserów, gatunków, filmów)</li>
+        <li>Edit (podobny do update) – edytowanie wartoœci.</li>
+        <li>Remove – usuwanie z bazy danych (aktorów, re¿yserów, gatunków, filmów).</li>
+    </ol>
+    <p>
+
+        Kontrolery prowadzą do views'ów o takich samych nazwach.<br />
+
+        Przykładowy kontroler – Actor zawierający powyższe metody:<br />
+
+        Natomiast kontroler Movie_Actor s³u¿y jedynie do wyœwietlania i tworzenia, czyli dodawania aktora <br />
+        do listy aktorów w danym filmie. Dlatego ten kontroler zawiera tylko metody Index oraz Create.<br />
+
+        Z kolei w kontrolerze Movie nie ma metody odpowiedzialnej za edytowanie, kontroler zawiera następujące metody:<br />
+
+
+        <h2>Modele</h2>
+    <p>
+
+    <p><b>Stworzone zostały modele:</b></p>
+    <ol type="1" start="1">
+        <li>Actor (pola: Id, Name, Experience, Gender)</li>
+        <li>Director</li>
+        <li>Genre (pola: Id, Name, lista Movies)</li>
+        <li>Movie (pola: Id, Name, Genre, Duration, StartDate, Director, lista Actors)</li>
+        <li>Movie_Actor</li>
+    </ol>
+    <p>
+        Ka¿dy model ma podstawowe przykładowo model Actor zawiera pola Id (jest kluczem głównym) , Name, Experience,<br />
+        Gender. Dodatkowo w modelach: Actor, Director, Genre znajdują się listy filmów, w których aktorzy wystêpują.
+
+        To co odróżnia go od innych modeli to to, że w modelu Movie znajdują się dodatkowo obiekty Director i Genre z dwoma <br />
+        kluczami obcymi, w celu połączenia tych modeli w bazie danych. W tym modelu jest też lista wszystkich aktorów w celu pokazania<br />
+        wszystkich aktorów, którzy zagrali w danym filmie.
+
+        Model Movie_Actor znacz¹co ró¿ni siê od pozosta³ych:
+
+    </p>
+
+    <p>
+        Jest to model, który przechowuje „wydarzenie”, ¿e dany aktor gra w danym filmie. Ma klucze obce modelu Actor i Movie oraz obiekty, <br />
+        z których siê potem korzysta przy tworzeniu nowych danych.
+    </p>
+
+    <h2>Widoki</h2>
+
+    <p><b>Dla ka¿dego modelu widoki:</b></p>
+    <ol type="1" start="1">
+        <li>Indexy – tabele.</li>
+        <li>Create – formularze z możliwościami tworzenia.</li>
+        <li>Edit – formularze, z możliwościami edytowania istniejących.</li>
+        <li>W modelu Movie_Actor:</li>
+        <ul type="1" start="1">
+            <li>Create – odpowiada za tworzenie połączeń miêdzy aktorem, a filmem,</li>
+            <li>Index – odpowiada za wyœwietlanie listy aktorów przypisanych do danego filmu.</li>
+        </ul>
+    </ol>
+</body>
+</html>

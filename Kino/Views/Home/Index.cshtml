@@ -3,6 +3,28 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">TTW Cinema!</h1>
+
+    <div class="d-flex">
+        <div style="width: 4%"></div>
+        <div class="flex-column" style="width: 23%">
+            <h4>Blockbusters!</h4>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Movie" asp-action="Index"><img src="lib/img/movie.png" style="width:90%; height:90%"></a>
+        </div>
+        <div class="flex-column" style="width: 23%">
+            <h4>Movie Stars</h4>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Actor" asp-action="Index"><img src="lib/img/haniaoliwka.png" style="width:90%; height:90%"></a>
+        </div>
+        
+        <div class="flex-column"style="width: 23%">
+            <h4>Famous Directors</h4>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Director" asp-action="Index"><img src="lib/img/maciek.png" style="width:90%; height:90%"></a>
+        </div>
+        <div class="flex-column" style="width: 23%">
+            <h4>All genres you know!</h4>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Genre" asp-action="Index"><img src="lib/img/genre.png" style="width:90%; height:90%"></a>
+        </div>
+        <div style="width: 4%"></div>
+    </div>
+
 </div>
